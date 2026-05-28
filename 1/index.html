@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My first three.js app</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      #info {
+        position: absolute;
+        top: 50px;
+        width: 100%;
+        text-align: center;
+        z-index: 100;
+        display: block;
+        color: #fff;
+        font-family: Roboto, sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@<version>/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@<version>/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="info">Amazing rotating cube</div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
