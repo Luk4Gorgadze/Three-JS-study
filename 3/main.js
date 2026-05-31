@@ -35,7 +35,8 @@ document.body.appendChild(renderer.domElement);
 
 const scene = new THREE.Scene();
 
-new EXRLoader().load("./Hdri/studio_small_09_2k.exr", (texture) => {
+const hdriUrl = new URL("./Hdri/studio_small_09_2k.exr", import.meta.url).href;
+new EXRLoader().load(hdriUrl, (texture) => {
   scene.environment = texture;
 });
 
