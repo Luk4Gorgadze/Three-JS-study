@@ -111,8 +111,14 @@ const world = new RAPIER.World({ x: 0, y: 0, z: 0 });
 
 const numBodies = 16;
 const bodies = [];
+const colorCycle = [0xffe68c, 0x4cc9f0, 0x90be6d, 0xfee440, 0xf72585];
 for (let i = 0; i < numBodies; i++) {
   const body = getBody(RAPIER, world);
+  const initialColor = body.mesh.material.color?.getHex?.();
+  body.mesh.userData.colorIndex = initialColor === 0xffe68c ? 0 : -1;
+  if (body.mesh.userData.colorIndex === 0) {
+    body.mesh.userData.targetColor = body.mesh.material.color.clone();
+  }
   bodies.push(body);
   scene.add(body.mesh);
 }
@@ -157,6 +163,19 @@ window.addEventListener("mousemove", (evt) => {
   );
 });
 
+window.addEventListener("pointerdown", () => {
+  bodies.forEach((body) => {
+    const index = body.mesh.userData.colorIndex;
+    if (index === undefined || index < 0) {
+      return;
+    }
+
+    const nextIndex = (index + 1) % colorCycle.length;
+    body.mesh.userData.colorIndex = nextIndex;
+    body.mesh.userData.targetColor = new THREE.Color(colorCycle[nextIndex]);
+  });
+});
+
 let cameraDirection = new THREE.Vector3();
 
 function handleRaycast() {
@@ -173,6 +192,13 @@ function animate() {
   world.step();
   handleRaycast();
   mouseBall.update(mousePos);
+  bodies.forEach((b) => {
+    const target = b.mesh.userData.targetColor;
+    if (!target) {
+      return;
+    }
+    b.mesh.material.color.lerp(target, 0.08);
+  });
   bodies.forEach((b) => b.update());
   renderPipeline.render();
 }
