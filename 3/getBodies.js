@@ -26,13 +26,17 @@ const glbLoader = new GLTFLoader();
 const glbPaths = ["duck.glb"]; // Add more paths as needed
 
 const textureLoader = new THREE.TextureLoader();
-const baseColorMap = textureLoader.load(
+const baseColorUrl = new URL(
   "./textures/2K/Poliigon_PlasticMoldDryBlast_7495_BaseColor.jpg",
-);
-baseColorMap.colorSpace = THREE.SRGBColorSpace;
-const normalMap = textureLoader.load(
+  import.meta.url,
+).href;
+const normalUrl = new URL(
   "./textures/2K/Poliigon_PlasticMoldDryBlast_7495_Normal.png",
-);
+  import.meta.url,
+).href;
+const baseColorMap = textureLoader.load(baseColorUrl);
+baseColorMap.colorSpace = THREE.SRGBColorSpace;
+const normalMap = textureLoader.load(normalUrl);
 
 function getGeometry(size) {
   const randomGeo = geometries[Math.floor(Math.random() * geometries.length)];
