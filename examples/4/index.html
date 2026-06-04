@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Strawberry floats</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;600&display=swap"
+    />
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      .UI {
+        position: fixed;
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        padding: 40px 80px;
+        box-sizing: border-box;
+        background: rgba(10, 8, 8, 0.25);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .UI > * {
+        position: relative;
+        z-index: 1;
+      }
+      .UI::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+          circle at center,
+          rgba(0, 0, 0, 0) 45%,
+          rgba(0, 0, 0, 0.45) 100%
+        );
+      }
+      .Title {
+        font-family: serif;
+        color: #ffffff;
+        font-size: 130px;
+        font-weight: 600;
+      }
+      .subHeader {
+        font-family: serif;
+        font-size: 18px;
+        color: #ffffff;
+        font-weight: 600;
+        margin-top: 20px;
+      }
+      .Link {
+        pointer-events: auto;
+      }
+      .Link {
+        font-family: "Inter", sans-serif;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 500;
+        text-decoration: none;
+        margin-right: 20px;
+      }
+      .Footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: end;
+      }
+      .Description {
+        font-family: "Inter", sans-serif;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 500;
+        max-width: 600px;
+        text-align: right;
+      }
+      @media (max-width: 900px) {
+        .UI {
+          padding: 32px 36px;
+        }
+        .Title {
+          font-size: 88px;
+        }
+        .Footer {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 20px;
+        }
+        .Description {
+          max-width: 520px;
+          text-align: left;
+        }
+      }
+      @media (max-width: 640px) {
+        .UI {
+          padding: 24px 20px;
+        }
+        .Title {
+          font-size: 44px;
+          line-height: 1.05;
+        }
+        .subHeader {
+          font-size: 14px;
+          margin-top: 12px;
+        }
+        .Link {
+          display: inline-block;
+          margin: 0;
+          font-size: 18px;
+        }
+        .Footer {
+          gap: 18px;
+        }
+        .Links {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px 18px;
+        }
+        .Description {
+          font-size: 18px;
+          max-width: 100%;
+        }
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="UI">
+      <div>
+        <div class="Title">STRAWBERRY <br />FLOATS</div>
+        <div class="subHeader">Three.js + RAPIER</div>
+      </div>
+      <div>
+        <div class="Footer">
+          <div class="Links">
+            <a
+              class="Link"
+              href="https://github.com/Luk4Gorgadze"
+              target="_blank"
+            >
+              github</a
+            >
+            <a
+              class="Link"
+              href="https://www.linkedin.com/in/luka-gorgadze/"
+              target="_blank"
+            >
+              linkedin</a
+            >
+            <a
+              class="Link"
+              href="https://www.instagram.com/luking.digital/"
+              target="_blank"
+            >
+              instagram</a
+            >
+          </div>
+          <p class="Description">
+            Strawberries may look like ordinary berries, but botanically they
+            are something entirely different. The juicy red part we eat is
+            actually an enlarged flower receptacle, while the tiny specks on the
+            surface are individual fruits called achenes. A single strawberry
+            can carry around 200 of these miniature fruits, making it one of the
+            few fruits that wears its seeds on the outside. Their unique
+            structure, bright color, and sweet aroma have made strawberries one
+            of the world's most popular fruits.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
