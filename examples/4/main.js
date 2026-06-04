@@ -56,17 +56,18 @@ const world = new RAPIER.World({ x: 0, y: 0, z: 0 });
 
 const loader = new GLTFLoader();
 const textureLoader = new TextureLoader();
+const assetBase = import.meta.env.BASE_URL;
 const baseMaps = [
-  textureLoader.load("./models/textures/New Group_Color_Baked_0.png"),
-  textureLoader.load("./models/textures/New Group_Color_Baked_2.png"),
-  textureLoader.load("./models/textures/New Group_Color_Baked_1.png"),
+  textureLoader.load(`${assetBase}models/textures/New Group_Color_Baked_0.png`),
+  textureLoader.load(`${assetBase}models/textures/New Group_Color_Baked_2.png`),
+  textureLoader.load(`${assetBase}models/textures/New Group_Color_Baked_1.png`),
 ];
 baseMaps.forEach((map) => {
   map.colorSpace = THREE.SRGBColorSpace;
   map.flipY = true;
 });
 
-const gltf = await loader.loadAsync("./models/Strawberry.glb");
+const gltf = await loader.loadAsync(`${assetBase}models/Strawberry.glb`);
 const modelRoot = gltf.scene;
 let meshIndex = 0;
 modelRoot.traverse((node) => {
